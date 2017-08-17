@@ -1,0 +1,26 @@
+<div class="wrm-modal">
+  <div class="wrm-modal-content">
+    <div class="wrm-flex-item">
+      <div>
+        <a ng-click="$ctrl.onDeny()" class="wrm-modal-close">&times;</a>
+      </div>
+    </div>
+    <div><strong>{{$ctrl.origin}}</strong> wants to</div>
+    <br>
+    <div ng-repeat="permission in $ctrl.permissions">
+      <i class="{{permission.icon}}"></i> {{permission.name}}
+    </div>
+    <br>
+    <div class="wrm-button-bar" style="margin-top: 10px">
+      <button
+        ng-click="$ctrl.onDeny()"
+        type="button" class="btn btn-default wrm-button">Block
+      </button>
+      <span style="margin-right: 5px"></span>
+      <button
+        ng-click="$ctrl.onAllow()"
+        type="button" class="btn btn-default wrm-button">Allow
+      </button>
+    </div>
+  </div>
+</div>
