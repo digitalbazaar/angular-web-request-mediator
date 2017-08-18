@@ -4,6 +4,7 @@
  * Copyright (c) 2017 Digital Bazaar, Inc. All rights reserved.
  */
 @wrm-modal-font-size: 12px;
+@wrm-modal-background: #ddd;
 
 .wrm-flex-column {
   display: flex;
@@ -53,7 +54,7 @@ div.wrm-modal {
   flex-direction: column;
   /* TODO: add media queries for model content size? */
   width: 300px;
-  background: #ddd;
+  background: @wrm-modal-background;
   color: black;
   padding: 15px;
   border: 1px solid rgba(150, 150, 150, 0.3);
@@ -99,14 +100,32 @@ div.wrm-modal {
 }
 
 .wrm-modal-close {
-  color: #000;
+  color: #777;
+  border: 1px solid transparent;
+  display: inline-block;
   float: right;
   font-size: 21px;
   font-weight: bold;
-  line-height: 1;
-  margin-top: -11px;
-  margin-right: -7px;
-  opacity: 0.4;
+  line-height: 0;
+  margin: -7px;
+  padding: 7px 1px;
+
+  &:before {
+    // &times
+    content: '\00d7';
+  }
+
+  &:hover {
+    color: @wrm-modal-background;
+    border: 1px solid #777;
+    border-radius: 50%;
+    background-color: #777;
+
+    &:active {
+      border: 1px solid #000;
+      background-color: #000;
+    }
+  }
 }
 
 .wrm-button-bar {
