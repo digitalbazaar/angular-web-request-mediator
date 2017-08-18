@@ -10,5 +10,26 @@ export default {
     onDeny: '&wrmOnDeny',
     onAllow: '&wrmOnAllow'
   },
+  controller: Ctrl,
   templateUrl: 'angular-web-request-mediator/permission-dialog-component.html'
 };
+
+/* @ngInject */
+function Ctrl($document) {
+  const self = this;
+
+  self.$onInit = () => {
+    $document[0].addEventListener('keydown', listener);
+  };
+
+  self.$onDestroy = () => {
+    $document[0].removeEventListener('keydown', listener);
+  };
+
+  function listener(event) {
+    if(event.key === 'Escape') {
+      event.preventDefault();
+      self.onDeny();
+    }
+  }
+}
