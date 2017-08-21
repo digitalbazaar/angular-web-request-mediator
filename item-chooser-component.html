@@ -1,0 +1,39 @@
+<div class="wrm-modal">
+  <div class="wrm-modal-content">
+    <div>
+      <a ng-click="$ctrl.onDeny()" class="wrm-modal-close"></a>
+    </div>
+    <div ng-transclude="wrm-item-chooser-header"
+      style="padding-right: 10px"></div>
+    <br>
+    <div ng-if="$ctrl.items.length > 0" class="wrm-flex-column-stretch">
+      <div class="wrm-flex-column-stretch wrm-flex-item-grow">
+        <div class="wrm-flex-item" ng-repeat="item in $ctrl.items"
+          ng-click="$ctrl.onSelect({item: item})">
+          <div class="wrm-item">
+            <i ng-if="!item.icon"
+              class="fa fa-user fa-3x pull-left" style="padding-left: 8px"></i>
+            <div class="text" style="margin-left: 60px;">
+              <strong>{{item.name}}</strong>
+              <h6 class="text-muted"
+                style="font-size: 11px; margin-top: 4px; margin-bottom: 4px;">
+                {{item.origin}}
+              </h6>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrm-button-bar" style="margin-top: 10px">
+      <button
+        ng-click="$ctrl.onCancel()"
+        type="button" class="wrm-button">None
+      </button>
+      <!-- <span style="margin-right: 5px"></span>
+      <button
+        ng-click="$ctrl.onSelect()"
+        type="button" class="wrm-button">Ok
+      </button> -->
+    </div>
+  </div>
+</div>

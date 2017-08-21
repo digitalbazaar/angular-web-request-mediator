@@ -5,6 +5,7 @@
  */
 @wrm-modal-font-size: 12px;
 @wrm-modal-background: #ddd;
+@wrm-active-border-color: #0077b3;
 
 .wrm-flex-column {
   display: flex;
@@ -170,7 +171,7 @@ div.wrm-modal {
 
   &:active, &:focus, {
     outline: none;
-    border-color: #0077b3;
+    border-color: @wrm-active-border-color;
   }
 }
 
@@ -179,4 +180,19 @@ div.wrm-modal {
   border-top: 1px solid #ccc;
   margin-bottom: 10px;
   margin-top: 10px;
+}
+
+.wrm-item {
+  border: 1px solid transparent;
+  border-radius: 2px;
+  padding: 5px;
+  touch-action: manipulation;
+
+  &:hover {
+    border: 1px solid @wrm-active-border-color !important;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+    cursor: pointer;
+    outline: none;
+    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  }
 }
