@@ -3,7 +3,9 @@
     <div>
       <a ng-click="$ctrl.onDeny()" class="wrm-modal-close"></a>
     </div>
-    <div><strong>{{$ctrl.origin}}</strong> wants to</div>
+    <div style="margin-right: 10px">
+      <strong>{{$ctrl.origin}}</strong> wants to
+    </div>
     <br>
     <div ng-repeat="permission in $ctrl.permissions">
       <i class="{{permission.icon}}"></i> {{permission.name}}
