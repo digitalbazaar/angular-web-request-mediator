@@ -5,7 +5,13 @@
  */
 @wrm-modal-font-size: 12px;
 @wrm-modal-background: #ddd;
+@wrm-modal-border-color: rgba(150, 150, 150, 0.3);
+@wrm-selectable-background-color: lighten(@wrm-modal-background, 5%);
 @wrm-active-border-color: #0077b3;
+@wrm-activity-bar-background-color: darken(@wrm-active-border-color, 5%);
+@wrm-activity-bar-line-color: lighten(@wrm-active-border-color, 40%);
+@wrm-gray: #aaa;
+@wrm-dark-gray: darken(@wrm-gray, 25%);
 
 .wrm-flex-column {
   display: flex;
@@ -58,7 +64,7 @@ div.wrm-modal {
   background: @wrm-modal-background;
   color: black;
   padding: 15px;
-  border: 1px solid rgba(150, 150, 150, 0.3);
+  border: 1px solid @wrm-modal-border-color;
   border-radius: 3px;
   outline: none;
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.3);
@@ -71,44 +77,16 @@ div.wrm-modal {
   overflow-y: auto;*/
 }
 
-.wrm-modal-content-with-handler-ui {
-  height: calc(100vh - 10px);
-
-  @media (min-height: 555px) {
-    height: calc(90vh - 10px);
-  }
-  @media (min-height: 625px) {
-    height: calc(80vh - 10px);
-  }
-  @media (min-height: 833px) {
-    height: calc(60vh - 10px);
-  }
-  @media (min-height: 1000px) {
-    height: calc(50vh - 10px);
-  }
-  @media (min-height: 1250px) {
-    height: calc(40vh - 10px);
-  }
-  @media (min-height: 1667px) {
-    height: calc(30vh - 10px);
-  }
-  @media (min-height: 2500px) {
-    height: calc(20vh - 10px);
-  }
-  @media (min-height: 5000px) {
-    height: calc(10vh - 10px);
-  }
-}
-
 .wrm-modal-close {
   color: #777;
   border: 1px solid transparent;
   display: inline-block;
   float: right;
-  font-size: 20px;
+  font-size: 21px;
   font-weight: bold;
   line-height: 0;
   margin: -7px;
+  outline: none;
   padding: 7px 1px;
 
   &:before {
@@ -116,7 +94,7 @@ div.wrm-modal {
     content: '\00d7';
   }
 
-  &:hover {
+  &:hover:not(:disabled) {
     color: @wrm-modal-background;
     border: 1px solid #777;
     border-radius: 50%;
@@ -126,6 +104,11 @@ div.wrm-modal {
       border: 1px solid #000;
       background-color: #000;
     }
+  }
+
+  &:disabled {
+    color: @wrm-gray;
+    cursor: auto;
   }
 }
 
@@ -163,7 +146,7 @@ div.wrm-modal {
   word-spacing: normal;
   -webkit-appearance: button;
 
-  &:hover {
+  &:hover:not(:disabled) {
     border-color: #999;
     background-color: #eee;
     outline: none;
@@ -172,6 +155,13 @@ div.wrm-modal {
   &:active, &:focus, {
     outline: none;
     border-color: @wrm-active-border-color;
+  }
+
+  &:disabled {
+    background-color: #ddd;
+    box-shadow: none;
+    color: @wrm-gray;
+    cursor: auto;
   }
 }
 
@@ -182,17 +172,89 @@ div.wrm-modal {
   margin-top: 10px;
 }
 
+.wrm-panel {
+  background-color: @wrm-modal-background;
+  border-bottom: 1px solid @wrm-modal-border-color;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-size: 12px;
+  padding: 2px;
+  text-align: center;
+
+  strong {
+    color: darken(@wrm-active-border-color, 10%);
+  }
+}
+
 .wrm-item {
   border: 1px solid transparent;
   border-radius: 2px;
   padding: 5px;
-  touch-action: manipulation;
 
-  &:hover {
-    border: 1px solid @wrm-active-border-color !important;
-    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
-    cursor: pointer;
-    outline: none;
-    transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  h6 {
+    color: @wrm-dark-gray;
+    font-size: 11px;
+    margin-top: 4px;
+    margin-bottom: 4px;
   }
+
+  &.wrm-disabled {
+    color: @wrm-gray;
+
+    h6 {
+      color: @wrm-gray;
+    }
+  }
+
+  &.wrm-selected {
+    outline: none;
+    border-color: @wrm-active-border-color;
+    background-color: @wrm-selectable-background-color;
+  }
+
+  &.wrm-selectable {
+    touch-action: manipulation;
+
+    &:hover {
+      background-color: @wrm-selectable-background-color;
+      border: 1px solid @wrm-active-border-color !important;
+      box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075);
+      cursor: pointer;
+      outline: none;
+      transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+    }
+  }
+}
+
+/* Activity bar */
+@keyframes wrm-pulse-animation {
+  0% {
+    left: -100%;
+  }
+  50% {
+    left: 100%;
+  }
+  100% {
+    left: -100%;
+  }
+}
+.wrm-activity-bar {
+  height: 3px;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  background-color: @wrm-activity-bar-background-color;
+}
+.wrm-activity-bar .wrm-activity-line {
+  animation-duration: 3s;
+  animation-iteration-count: infinite;
+  animation-name: wrm-pulse-animation;
+  animation-timing-function: ease-in-out;
+  background-image: linear-gradient(
+    to right,
+    @wrm-activity-bar-background-color,
+    @wrm-activity-bar-line-color 50%,
+    @wrm-activity-bar-background-color 100%);
+  height: 100%;
+  width: 100%;
+  position: absolute;
 }

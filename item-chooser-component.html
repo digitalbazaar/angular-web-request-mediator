@@ -1,7 +1,9 @@
 <div class="wrm-modal">
   <div class="wrm-modal-content">
     <div>
-      <a ng-click="$ctrl.onDeny()" class="wrm-modal-close"></a>
+      <button ng-click="$ctrl.selectedItem && $ctrl.onCancel()"
+        class="wrm-modal-close"
+        ng-disabled="$ctrl.selectedItem"></button>
     </div>
     <div ng-transclude="wrm-item-chooser-header"
       style="padding-right: 10px"></div>
@@ -9,25 +11,36 @@
     <div ng-if="$ctrl.items.length > 0" class="wrm-flex-column-stretch">
       <div class="wrm-flex-column-stretch wrm-flex-item-grow">
         <div class="wrm-flex-item" ng-repeat="item in $ctrl.items"
-          ng-click="$ctrl.onSelect({item: item})">
-          <div class="wrm-item">
+          ng-click="!$ctrl.selectedItem && $ctrl.select(item)">
+          <div ng-if="!$ctrl.selectedItem" class="wrm-item wrm-selectable">
             <i ng-if="!item.icon"
-              class="fa fa-user fa-3x pull-left" style="padding-left: 8px"></i>
-            <div class="text" style="margin-left: 60px;">
+              class="fa fa-user fa-3x fa-pull-left" style="padding-left: 8px"></i>
+            <div style="margin-left: 60px;">
               <strong>{{item.name}}</strong>
-              <h6 class="text-muted"
-                style="font-size: 11px; margin-top: 4px; margin-bottom: 4px;">
-                {{item.origin}}
-              </h6>
+              <h6>{{item.origin}}</h6>
+            </div>
+          </div>
+          <div ng-if="$ctrl.selectedItem"
+            ng-class="{
+              'wrm-item wrm-selected': item === $ctrl.selectedItem,
+              'wrm-item wrm-disabled': item !== $ctrl.selectedItem
+            }">
+            <i ng-if="!item.icon"
+              class="fa fa-user fa-3x fa-pull-left" style="padding-left: 8px"></i>
+            <div style="margin-left: 60px;">
+              <strong>{{item.name}}</strong>
+              <h6>{{item.origin}}</h6>
+              <wrm-activity-bar ng-if="item === $ctrl.selectedItem"></wrm-activity-bar>
             </div>
           </div>
         </div>
       </div>
     </div>
     <div class="wrm-button-bar" style="margin-top: 10px">
-      <button
-        ng-click="$ctrl.onCancel()"
-        type="button" class="wrm-button">Cancel
+      <button type="button" class="wrm-button"
+        ng-disabled="$ctrl.selectedItem"
+        ng-click="$ctrl.onCancel()">
+        Cancel
       </button>
       <!-- <span style="margin-right: 5px"></span>
       <button
