@@ -3,15 +3,25 @@
  *
  * Copyright (c) 2017 Digital Bazaar, Inc. All rights reserved.
  */
+@wrm-gray: #aaa;
+@wrm-dark-gray: darken(@wrm-gray, 25%);
+
 @wrm-modal-font-size: 12px;
 @wrm-modal-background: #ddd;
 @wrm-modal-border-color: rgba(150, 150, 150, 0.3);
+
 @wrm-selectable-background-color: lighten(@wrm-modal-background, 5%);
+
 @wrm-active-border-color: #0077b3;
 @wrm-activity-bar-background-color: darken(@wrm-active-border-color, 5%);
 @wrm-activity-bar-line-color: lighten(@wrm-active-border-color, 40%);
-@wrm-gray: #aaa;
-@wrm-dark-gray: darken(@wrm-gray, 25%);
+
+@wrm-close-button-size: 20px;
+@wrm-close-button-width: (@wrm-close-button-size - 1);
+@wrm-close-button-height: (@wrm-close-button-size - 1);
+@wrm-close-x-left: (unit(@wrm-close-button-size) / 4);
+@wrm-close-x-right: (unit(@wrm-close-button-width) - @wrm-close-x-left);
+@wrm-close-x-stroke-width: 2.5;
 
 .wrm-flex-column {
   display: flex;
@@ -77,38 +87,77 @@ div.wrm-modal {
   overflow-y: auto;*/
 }
 
-.wrm-modal-close {
-  color: #777;
-  border: 1px solid transparent;
+wrm-close-button {
+  cursor: pointer;
   display: inline-block;
   float: right;
-  font-size: 21px;
-  font-weight: bold;
-  line-height: 0;
   margin: -7px;
-  outline: none;
-  padding: 7px 1px;
 
-  &:before {
-    // &times
-    content: '\00d7';
-  }
+  svg {
+    height: @wrm-close-button-width;
+    width: @wrm-close-button-height;
 
-  &:hover:not(:disabled) {
-    color: @wrm-modal-background;
-    border: 1px solid #777;
-    border-radius: 50%;
-    background-color: #777;
+    path:nth-of-type(1) {
+      d: path('M@{wrm-close-x-left}, @{wrm-close-x-left}, @{wrm-close-x-right}, @{wrm-close-x-right}')
+    }
+    path:nth-of-type(2) {
+      d: path('M@{wrm-close-x-left}, @{wrm-close-x-right}, @{wrm-close-x-right}, @{wrm-close-x-left}')
+    }
+
+    circle {
+      visibility: hidden;
+      cx: (unit(@wrm-close-button-width) / 2);
+      cy: (unit(@wrm-close-button-height) / 2);
+      r: (unit(@wrm-close-button-width) / 2 - 1);
+      stroke-width: 1;
+    }
+    path {
+      fill: none;
+      stroke: #777;
+      stroke-width: @wrm-close-x-stroke-width;
+    }
+
+    &:hover {
+      circle {
+        visibility: visible;
+        stroke: #777;
+        fill: #777;
+      }
+      path {
+        stroke: @wrm-modal-background;
+      }
+    }
 
     &:active {
-      border: 1px solid #000;
-      background-color: #000;
+      circle {
+        visibility: visible;
+        stroke: #000;
+        fill: #000;
+      }
+      path {
+        stroke: @wrm-modal-background;
+      }
     }
   }
 
-  &:disabled {
-    color: @wrm-gray;
-    cursor: auto;
+  &[disabled], &:disabled {
+    cursor: default;
+    pointer-events: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+    svg {
+      &:hover {
+        circle {
+          visibility: hidden;
+        }
+        path {
+          stroke: @wrm-modal-background;
+        }
+      }
+    }
   }
 }
 

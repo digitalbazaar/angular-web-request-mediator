@@ -1,9 +1,8 @@
 <div class="wrm-modal">
   <div class="wrm-modal-content">
     <div>
-      <button ng-click="$ctrl.selectedItem && $ctrl.onCancel()"
-        class="wrm-modal-close"
-        ng-disabled="$ctrl.selectedItem"></button>
+      <wrm-close-button ng-click="!$ctrl.selectedItem && $ctrl.onCancel()"
+        ng-disabled="$ctrl.selectedItem"></wrm-close-button>
     </div>
     <div ng-transclude="wrm-item-chooser-header"
       style="padding-right: 10px"></div>

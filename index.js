@@ -5,11 +5,13 @@
  */
 import angular from 'angular';
 import ActivityBarComponent from './activity-bar-component.js';
+import CloseButtonComponent from './close-button-component.js';
 import ItemChooserComponent from './item-chooser-component.js';
 import PermissionDialogComponent from './permission-dialog-component.js';
 
 const module = angular.module('web-request-mediator', []);
 
 module.component('wrmActivityBar', ActivityBarComponent);
+module.component('wrmCloseButton', CloseButtonComponent);
 module.component('wrmItemChooser', ItemChooserComponent);
 module.component('wrmPermissionDialog', PermissionDialogComponent);
