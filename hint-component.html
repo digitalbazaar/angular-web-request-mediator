@@ -1,0 +1,9 @@
+<div ng-class="$ctrl.hintClass">
+  <i ng-if="!$ctrl.hint.icon"
+    class="fa fa-user fa-3x fa-pull-left" style="padding-left: 8px"></i>
+  <div style="margin-left: 60px;">
+    <strong>{{$ctrl.hint.name}}</strong>
+    <h6>{{$ctrl.hint.origin}}</h6>
+    <wrm-activity-bar ng-if="$ctrl.active"></wrm-activity-bar>
+  </div>
+</div>

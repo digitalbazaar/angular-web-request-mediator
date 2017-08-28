@@ -1,0 +1,51 @@
+<div class="wrm-modal">
+  <div class="wrm-modal-content">
+    <wrm-close-button ng-click="!$ctrl.confirming && $ctrl.close()"
+      ng-disabled="$ctrl.confirming">
+    </wrm-close-button>
+    <div ng-if="$ctrl.display === 'list'" class="wrm-slide"
+      style="padding-top: 15px">
+      <wrm-hint-list wrm-hints="$ctrl.hints"
+        wrm-activate-on-select="false"
+        wrm-on-select="$ctrl.select(hint)">
+      </wrm-hint-list>
+    </div>
+    <div ng-if="$ctrl.display === 'overview'" class="wrm-slide">
+      <div ng-transclude="wrm-hint-chooser-header"
+        style="padding-right: 10px"></div>
+      <br>
+      <!-- confirm button ON and at least one choice -->
+      <div ng-if="$ctrl.confirmButton && $ctrl.selectedHint"
+        ng-click="$ctrl.display = 'list'">
+        <wrm-hint wrm-hint="$ctrl.selectedHint" wrm-default-icon="fa-user"
+          wrm-active="$ctrl.confirming"
+          wrm-selected="false"
+          wrm-selectable="true"
+          wrm-disabled="false">
+        </wrm-hint>
+      </div>
+      <!-- confirm button OFF; selection integrated -->
+      <div ng-if="!$ctrl.confirmButton && $ctrl.hints.length > 0"
+        class="wrm-flex-column-stretch">
+        <wrm-hint-list wrm-hints="$ctrl.hints"
+          wrm-activate-on-select="true"
+          wrm-on-select="$ctrl.confirm(hint)">
+        </wrm-hint-list>
+      </div>
+      <div class="wrm-button-bar" style="margin-top: 10px">
+        <button type="button" class="wrm-button"
+          ng-disabled="$ctrl.confirming"
+          ng-click="$ctrl.onCancel()">
+          Cancel
+        </button>
+        <button ng-if="$ctrl.confirmButton"
+          style="margin-left: 5px"
+          ng-disabled="$ctrl.confirming"
+          ng-click="$ctrl.confirm($ctrl.selectedHint)"
+          type="button" class="wrm-button wrm-primary">
+          {{$ctrl.confirmButtonText}}
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

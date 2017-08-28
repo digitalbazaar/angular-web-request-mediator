@@ -14,6 +14,7 @@
 @wrm-selected-background-color: lighten(@wrm-selectable-background-color, 10%);
 
 @wrm-active-border-color: #0077b3;
+@wrm-primary: lighten(@wrm-active-border-color, 5%);
 @wrm-activity-bar-background-color: darken(@wrm-active-border-color, 5%);
 @wrm-activity-bar-line-color: lighten(@wrm-active-border-color, 40%);
 
@@ -90,9 +91,13 @@ div.wrm-modal {
 
 wrm-close-button {
   cursor: pointer;
-  display: inline-block;
-  float: right;
-  margin: -7px;
+  display: block;
+  margin: -7px -7px -14px -7px;
+
+  div {
+    display: inline-block;
+    float: right;
+  }
 
   svg {
     height: @wrm-close-button-width;
@@ -196,6 +201,16 @@ wrm-close-button {
   word-spacing: normal;
   -webkit-appearance: button;
 
+  &.wrm-primary {
+    color: #f7f7f7;
+    background-color: @wrm-primary;
+
+    &:hover:not(:disabled) {
+      border-color: lighten(@wrm-primary, 10%);
+      background-color: lighten(@wrm-primary, 5%);
+    }
+  }
+
   &:hover:not(:disabled) {
     border-color: #999;
     background-color: #eee;
@@ -235,7 +250,7 @@ wrm-close-button {
   }
 }
 
-.wrm-item {
+.wrm-hint {
   border: 1px solid transparent;
   border-radius: 2px;
   padding: 5px;
@@ -311,3 +326,24 @@ wrm-close-button {
   width: 100%;
   position: absolute;
 }
+
+/*.wrm-slide.ng-enter,
+.wrm-slide.ng-leave {
+  transition: 300ms cubic-bezier(0.25, 0.25, 0.75, 0.75) all;
+}
+.wrm-slide.ng-enter {
+  //left: 100%;
+  transform: translateX(60px);
+}
+.wrm-slide.ng-enter.wrm-slide.ng-enter-active {
+  //left: 0;
+  transform: translateX(0);
+}
+.wrm-slide.ng-leave {
+  //left: 0;
+  transform: translateX(0);
+}
+.wrm-slide.ng-leave.wrm-slide.ng-leave-active{
+  //left: -100%;
+  transform: translateX(-60px);
+}*/
