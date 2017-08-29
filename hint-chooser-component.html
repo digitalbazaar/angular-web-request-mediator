@@ -3,8 +3,8 @@
     <wrm-close-button ng-click="!$ctrl.confirming && $ctrl.close()"
       ng-disabled="$ctrl.confirming">
     </wrm-close-button>
-    <div ng-if="$ctrl.display === 'list'" class="wrm-slide"
-      style="padding-top: 15px">
+    <div ng-if="$ctrl.display === 'list'" class="wrm-slide">
+      <div class="wrm-heading" style="margin-top: 0">Choose an option</div>
       <wrm-hint-list wrm-hints="$ctrl.hints"
         wrm-default-hint-icon="{{$ctrl.defaultHintIcon}}"
         wrm-activate-on-select="false"

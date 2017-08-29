@@ -1,8 +1,10 @@
 <div ng-class="$ctrl.hintClass">
   <i ng-if="!$ctrl.hint.icon"
-    class="fa {{$ctrl.defaultIcon}} fa-3x fa-pull-left" style="padding-left: 8px"></i>
-  <!-- TODO: handle case where icon is given: ng-if="$ctrl.hint.icon" -->
-  <div style="margin-left: 60px;">
+    class="fa {{$ctrl.defaultIcon}} fa-3x fa-pull-left wrm-flex-item"
+    style="padding-left: 8px"></i>
+  <img ng-if="$ctrl.hint.icon" ng-src="{{$ctrl.hint.icon.fetchedImage}}"
+    style="width: 40px; max-height: 40px" class="wrm-flex-item">
+  <div style="margin-left: 10px;" class="wrm-flex-item-grow">
     <strong>{{$ctrl.hint.name}}</strong>
     <h6>{{$ctrl.hint.origin}}</h6>
     <wrm-activity-bar ng-if="$ctrl.active"></wrm-activity-bar>
