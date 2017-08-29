@@ -1,6 +1,7 @@
 <div ng-class="$ctrl.hintClass">
   <i ng-if="!$ctrl.hint.icon"
-    class="fa fa-user fa-3x fa-pull-left" style="padding-left: 8px"></i>
+    class="fa {{$ctrl.defaultIcon}} fa-3x fa-pull-left" style="padding-left: 8px"></i>
+  <!-- TODO: handle case where icon is given: ng-if="$ctrl.hint.icon" -->
   <div style="margin-left: 60px;">
     <strong>{{$ctrl.hint.name}}</strong>
     <h6>{{$ctrl.hint.origin}}</h6>

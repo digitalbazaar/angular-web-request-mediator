@@ -6,6 +6,7 @@
     <div ng-if="$ctrl.display === 'list'" class="wrm-slide"
       style="padding-top: 15px">
       <wrm-hint-list wrm-hints="$ctrl.hints"
+        wrm-default-hint-icon="{{$ctrl.defaultHintIcon}}"
         wrm-activate-on-select="false"
         wrm-on-select="$ctrl.select(hint)">
       </wrm-hint-list>
@@ -17,7 +18,8 @@
       <!-- confirm button ON and at least one choice -->
       <div ng-if="$ctrl.confirmButton && $ctrl.selectedHint"
         ng-click="$ctrl.display = 'list'">
-        <wrm-hint wrm-hint="$ctrl.selectedHint" wrm-default-icon="fa-user"
+        <wrm-hint wrm-hint="$ctrl.selectedHint"
+          wrm-default-icon="{{$ctrl.defaultHintIcon}}"
           wrm-active="$ctrl.confirming"
           wrm-selected="false"
           wrm-selectable="true"
@@ -28,6 +30,7 @@
       <div ng-if="!$ctrl.confirmButton && $ctrl.hints.length > 0"
         class="wrm-flex-column-stretch">
         <wrm-hint-list wrm-hints="$ctrl.hints"
+          wrm-default-hint-icon="{{$ctrl.defaultHintIcon}}"
           wrm-activate-on-select="true"
           wrm-on-select="$ctrl.confirm(hint)">
         </wrm-hint-list>

@@ -6,6 +6,7 @@
 export default {
   bindings: {
     hints: '<wrmHints',
+    defaultHintIcon: '@wrmDefaultHintIcon',
     onCancel: '&wrmOnCancel',
     onConfirm: '&wrmOnConfirm',
     confirmButton: '<?wrmConfirmButton',

@@ -6,6 +6,7 @@
 export default {
   bindings: {
     hints: '<wrmHints',
+    defaultHintIcon: '@wrmDefaultHintIcon',
     activateOnSelect: '<wrmActivateOnSelect',
     onSelect: '&wrmOnSelect'
   },

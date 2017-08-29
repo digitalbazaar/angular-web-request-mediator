@@ -2,7 +2,7 @@
   <div class="wrm-flex-column-stretch wrm-flex-item-grow">
     <div class="wrm-flex-item" ng-repeat="hint in $ctrl.hints"
       ng-click="!$ctrl.selectedHint && $ctrl.select(hint)">
-      <wrm-hint wrm-hint="hint" wrm-default-icon="fa-user"
+      <wrm-hint wrm-hint="hint" wrm-default-icon="{{$ctrl.defaultHintIcon}}"
         wrm-active="$ctrl.activateOnSelect && $ctrl.selectedHint === hint"
         wrm-selected="$ctrl.selectedHint === hint"
         wrm-selectable="true"
