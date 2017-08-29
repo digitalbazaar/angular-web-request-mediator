@@ -206,7 +206,7 @@ wrm-close-button {
     background-color: @wrm-primary;
 
     &:hover:not(:disabled) {
-      border-color: lighten(@wrm-primary, 10%);
+      border-color: darken(@wrm-primary, 5%);
       background-color: lighten(@wrm-primary, 5%);
     }
   }
@@ -250,11 +250,17 @@ wrm-close-button {
   }
 }
 
-.wrm-hint {
+.wrm-heading {
+  color: @wrm-dark-gray;
+  margin: 4px 0;
+  font-size: @wrm-modal-font-size
+}
+
+.wrm-item {
   border: 1px solid transparent;
   border-radius: 2px;
   padding: 5px;
-  margin: 1px 0 1px 0;
+  margin: 1px 0;
   background-color:@wrm-selectable-background-color;
   border-bottom-color: #bbb;
 

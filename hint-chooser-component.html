@@ -12,9 +12,7 @@
       </wrm-hint-list>
     </div>
     <div ng-if="$ctrl.display === 'overview'" class="wrm-slide">
-      <div ng-transclude="wrm-hint-chooser-header"
-        style="padding-right: 10px"></div>
-      <br>
+      <div ng-transclude="wrm-hint-chooser-header"></div>
       <!-- confirm button ON and at least one choice -->
       <div ng-if="$ctrl.confirmButton && $ctrl.selectedHint"
         ng-click="$ctrl.display = 'list'">

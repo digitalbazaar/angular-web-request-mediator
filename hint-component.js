@@ -19,10 +19,10 @@ export default {
 /* @ngInject */
 function Ctrl() {
   const self = this;
-  self.hintClass = 'wrm-hint';
+  self.hintClass = 'wrm-item';
 
   self.$onChanges = () => {
-    self.hintClass = ['wrm-hint'];
+    self.hintClass = ['wrm-item'];
     if(self.disabled) {
       self.hintClass.push('wrm-disabled');
     } else if(self.selected) {
