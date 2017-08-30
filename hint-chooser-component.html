@@ -15,7 +15,7 @@
       <div ng-transclude="wrm-hint-chooser-header"></div>
       <!-- confirm button ON and at least one choice -->
       <div ng-if="$ctrl.confirmButton && $ctrl.selectedHint"
-        ng-click="$ctrl.display = 'list'">
+        ng-click="!$ctrl.confirming && ($ctrl.display = 'list')">
         <wrm-hint wrm-hint="$ctrl.selectedHint"
           wrm-default-icon="{{$ctrl.defaultHintIcon}}"
           wrm-active="$ctrl.confirming"
