@@ -1,6 +1,6 @@
 {
   "name": "angular-web-request-mediator",
-  "version": "0.0.1-0",
+  "version": "0.1.0",
   "description": "AngularJS Web Request Mediator components",
   "main": "index.js",
   "less": "main.less",
