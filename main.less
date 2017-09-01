@@ -69,30 +69,29 @@ div.wrm-modal {
   align-items: center;
   justify-content: center;
   background: transparent;
-  font-size: @wrm-modal-font-size;
   padding-bottom: 5px;
 }
 
 .wrm-modal-content {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  /* TODO: add media queries for model content size? */
-  width: 300px;
   background: @wrm-modal-background;
-  color: black;
-  padding: 15px;
+  background-clip: padding-box;
   border: 1px solid @wrm-modal-border-color;
   border-radius: 3px;
-  outline: none;
   box-shadow: 0 2px 2px -1px rgba(0, 0, 0, 0.3);
-  background-clip: padding-box;
+  color: black;
+  display: flex;
+  //flex: 1 1 auto;
+  flex-direction: column;
+  font-size: @wrm-modal-font-size;
+  font-family: Arial;
   margin-top: 5px;
   max-height: calc(100vh - 10px);
-  font-family: Roboto, "Helvetica Neue", sans-serif;
-  // line-height: .8em;
-  /*flex: 1 1 auto;
-  overflow-y: auto;*/
+  outline: none;
+  //overflow-y: auto;
+  padding: 15px;
+  position: relative;
+  /* TODO: add media queries for model content size? */
+  width: 300px;
 }
 
 wrm-close-button {
@@ -246,7 +245,7 @@ wrm-close-button {
 .wrm-panel {
   background-color: @wrm-modal-background;
   border-bottom: 1px solid @wrm-modal-border-color;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Arial;
   font-size: 12px;
   padding: 2px;
   text-align: center;
