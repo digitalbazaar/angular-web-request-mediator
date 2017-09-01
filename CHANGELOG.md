@@ -1,5 +1,10 @@
 # angular-web-request-mediator ChangeLog
 
+## 0.1.1 - 2017-09-01
+
+### Changed
+- Use Arial font for modals.
+
 ## 0.1.0 - 2017-08-30
 
 ### Added
