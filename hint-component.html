@@ -8,5 +8,7 @@
     <strong>{{$ctrl.hint.name}}</strong>
     <h6>{{$ctrl.hint.origin}}</h6>
     <wrm-activity-bar ng-if="$ctrl.active"></wrm-activity-bar>
+    <!-- ensure same spacing whether activity bar is present or not -->
+    <div ng-if="!$ctrl.active" class="wrm-activity-bar" style="visibility: hidden"></div>
   </div>
 </div>
