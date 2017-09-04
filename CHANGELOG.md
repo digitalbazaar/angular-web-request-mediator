@@ -1,5 +1,10 @@
 # angular-web-request-mediator ChangeLog
 
+## 0.1.2 - 2017-09-04
+
+### Fixed
+- Ensure same spacing whether activity bar is present or not.
+
 ## 0.1.1 - 2017-09-01
 
 ### Changed
