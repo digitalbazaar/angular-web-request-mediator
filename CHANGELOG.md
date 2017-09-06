@@ -1,5 +1,10 @@
 # angular-web-request-mediator ChangeLog
 
+## 0.1.3 - 2017-09-06
+
+### Removed
+- Remove unused `angular-animate` dependency.
+
 ## 0.1.2 - 2017-09-04
 
 ### Fixed
