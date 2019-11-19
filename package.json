@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/digitalbazaar/angular-web-request-mediator",
   "dependencies": {
-    "angular": "~1.6.0"
+    "angular": "~1.7.9"
   },
   "bedrock": {
     "browserDependencies": [
